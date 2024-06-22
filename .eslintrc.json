@@ -27,6 +27,8 @@
         "tabWidth": 2
       }
     ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars":"off",
+    "no-console": "warn"
   }
 }
