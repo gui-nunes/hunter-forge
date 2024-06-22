@@ -5,11 +5,13 @@ if (!process.env.DISCORD_CLIENT_ID || !process.env.DISCORD_CLIENT_SECRET) {
   console.log('Missing environment variables for Discord OAuth');
   throw new Error('Missing environment variables for Discord OAuth');
 }
+
 const handler = NextAuth({
   providers: [
     DiscordProvider({
-      clientId: process.env.DISCORD_CLIENT_ID,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET,
+      clientId: process.env.DISCORD_CLIENT_ID!,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+      authorization: `https://discord.com/api/oauth2/authorize?scope=${['identify', 'email'].join(' ')}`,
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
